@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# This script will produce a hashed password.
+# The password output will always be the same
+# as long as the input is always the same.
+
+# The first command waits for an input string.
+# This is then piped to a sha256 hash.
+# A selection of characters is selected and then re-hashed.
+# The result then produces a password that is 24 characters long.
+
+
+read -p "Your Input:  " ; echo $REPLY | sha256sum | cut -b 5-16 | sha256sum | cut -b 20-43 && echo "Here is your password."
+
